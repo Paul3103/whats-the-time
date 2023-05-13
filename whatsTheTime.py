@@ -15,14 +15,16 @@ while True:
     minutes_passed = (current_time-timeStarted) // 60
     print(minutes_passed)
     # Buzz the buzzer for each minute that has passed
+    count = 0
     for i in range(minutes_passed+1):
         buzzer.duty_u16(1005)
         utime.sleep_ms(1000)
         buzzer.duty_u16(0)
-        utime.sleep_ms(500)
+        utime.sleep_ms(1000)
+        count+=2
 
     # Calculate the remaining seconds until the next minute
-    remaining_seconds = 60 - (current_time % 60)
+    remaining_seconds = 60-count
  
 
     # Wait until the next minute starts
